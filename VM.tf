@@ -1,12 +1,12 @@
 # Data source to fetch existing VNet
 data "azurerm_virtual_network" "vnet1" {
-  name                = "vnet-test"
+  name                = local.virtual_network.name
   resource_group_name = local.resource_group_name
 }
 
 # Data source to fetch existing Subnet
 data "azurerm_subnet" "subnet1" {
-  name                 = "subnet1"
+  name                 = local.subnets[0].name
   virtual_network_name = data.azurerm_virtual_network.vnet1.name
   resource_group_name  = local.resource_group_name
 
